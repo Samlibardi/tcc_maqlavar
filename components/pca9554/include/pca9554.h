@@ -9,7 +9,7 @@
 
 typedef struct {
 	i2c_master_bus_handle_t i2c_bus_handle;
-	SemaphoreHandle_t i2c_mutex;
+	SemaphoreHandle_t i2c_bus_mutex;
 	uint8_t pin_a0 : 1;
 	uint8_t pin_a1 : 1;
 	uint8_t pin_a2 : 1;

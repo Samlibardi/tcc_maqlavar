@@ -9,14 +9,17 @@
 #define MAIN_MAIN_H_
 
 #include "pca9554.h"
-#include "freertos/FreeRTOS.h"
-#include "freertos/event_groups.h"
 #include "esp_task.h"
 
 extern pca9554_handle_t pca_u3_handle, pca_u4_handle, pca_u5_handle;
+extern SemaphoreHandle_t i2c_mutex;
 
 #define PCA_IOPANEL pca_u3_handle
+
 #define PCA_VALVES_PRES_SWITCH pca_u4_handle
+#define PCA_VALVES PCA_VALVES_PRES_SWITCH
+#define PCA_PRES_SWITCH PCA_VALVES_PRES_SWITCH
+
 #define PCA_MOTOR_PUMP pca_u5_handle
 
 #define PCA_PIN_MOTOR_CW	(1 << 0)
@@ -32,6 +35,7 @@ extern pca9554_handle_t pca_u3_handle, pca_u4_handle, pca_u5_handle;
 #define PCA_PIN_VALVE_2		(1 << 6)
 #define PCA_PIN_VALVE_1		(1 << 7)
 
+#define PRESSURE_SWITCH_TASK_PRIORITY (ESP_TASK_PRIO_MAX - 5)
 #define DEVSTATE_TASK_PRIORITY (ESP_TASK_PRIO_MAX - 5)
 #define WASH_CYCLE_TASK_PRIORITY (ESP_TASK_PRIO_MAX - 6)
 #define IOPANEL_TASK_PRIORITY (ESP_TASK_PRIO_MAX - 7)

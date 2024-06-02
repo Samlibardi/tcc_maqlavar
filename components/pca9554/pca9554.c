@@ -10,6 +10,7 @@ typedef struct pca9554_control_t{
 	uint8_t output_reg_cache;
 	bool shared : 1;
 	StaticSemaphore_t dev_mutex;
+	SemaphoreHandle_t i2c_bus_mutex;
 } pca9554_control_t;
 
 #define PCA9554_BASE_ADDR 0x20
@@ -32,17 +33,22 @@ static esp_err_t pca9554x_init(pca9554_config_t* dev_config, pca9554_handle_t* r
 
 	i2c_master_dev_handle_t i2c_dev_handle;
 
+	xSemaphoreTake(dev_config->i2c_bus_mutex, portMAX_DELAY);
 	ret = i2c_master_bus_add_device(dev_config->i2c_bus_handle, &i2c_dev_config, &i2c_dev_handle);
+	xSemaphoreGive(dev_config->i2c_bus_mutex);
 
 	if(ret == ESP_OK) {
 		pca9554_control_t* cb = heap_caps_calloc(1, sizeof(pca9554_control_t), MALLOC_CAP_DEFAULT);
 		if(cb == NULL) {
 			ESP_LOGE(TAG, "%s(%d): no memory for PCA9554 device control block", __FUNCTION__, __LINE__);
+			xSemaphoreTake(dev_config->i2c_bus_mutex, portMAX_DELAY);
 			i2c_master_bus_rm_device(i2c_dev_handle);
+			xSemaphoreGive(dev_config->i2c_bus_mutex);
 			ret = ESP_ERR_NO_MEM;
 		}
 		else {
 			cb->i2c_dev_handle = i2c_dev_handle;
+			cb->i2c_bus_mutex = dev_config->i2c_bus_mutex;
 			cb->shared = dev_config->shared;
 			cb->last_cmd = PCA9554_CMD_INVALID;
 			cb->output_reg_cache = PCA9554_OUTPUT_REG_DEFAULT;
@@ -73,10 +79,17 @@ esp_err_t pca9554_read_op(pca9554_handle_t dev_handle, uint8_t* port_out, int ti
     if(ret == ESP_OK) {
 		if(dev_handle->shared || dev_handle->last_cmd != cmd) {
 			uint8_t wr_buf[] = { cmd };
-			ret = i2c_master_transmit_receive(dev_handle->i2c_dev_handle, wr_buf, sizeof(wr_buf), port_out, 1, timeout_ms);
+
+			if(xSemaphoreTake(dev_handle->i2c_bus_mutex, timeout_ms) == pdPASS) {
+				ret = i2c_master_transmit_receive(dev_handle->i2c_dev_handle, wr_buf, sizeof(wr_buf), port_out, 1, timeout_ms);
+				xSemaphoreGive(dev_handle->i2c_bus_mutex);
+			} else ret = ESP_ERR_TIMEOUT;
 			dev_handle->last_cmd = (ret == ESP_OK) ? cmd : PCA9554_CMD_INVALID;
 		} else {
-			ret = i2c_master_receive(dev_handle->i2c_dev_handle, port_out, 1, timeout_ms);
+			if(xSemaphoreTake(dev_handle->i2c_bus_mutex, timeout_ms) == pdPASS) {
+				ret = i2c_master_receive(dev_handle->i2c_dev_handle, port_out, 1, timeout_ms);
+				xSemaphoreGive(dev_handle->i2c_bus_mutex);
+			} else ret = ESP_ERR_TIMEOUT;
 		}
 		xSemaphoreGiveRecursive((SemaphoreHandle_t)&dev_handle->dev_mutex);
     }
@@ -92,8 +105,10 @@ esp_err_t pca9554_write_op(pca9554_handle_t dev_handle, uint8_t port_value, int 
     if(ret == ESP_OK) {
 		uint8_t buf[] = {cmd , port_value };
 
-		ret = i2c_master_transmit(dev_handle->i2c_dev_handle, buf, sizeof(buf), timeout_ms);
-
+		if(xSemaphoreTake(dev_handle->i2c_bus_mutex, timeout_ms) == pdPASS) {
+			ret = i2c_master_transmit(dev_handle->i2c_dev_handle, buf, sizeof(buf), timeout_ms);
+			xSemaphoreGive(dev_handle->i2c_bus_mutex);
+		} else ret = ESP_ERR_TIMEOUT;
 		dev_handle->last_cmd = (ret == ESP_OK) ? cmd : PCA9554_CMD_INVALID;
 		xSemaphoreGiveRecursive((SemaphoreHandle_t)&dev_handle->dev_mutex);
     }

@@ -8,6 +8,7 @@
 #include "devstate.h"
 #include "iopanel.h"
 #include "wash_cycle.h"
+#include "pressure_switch.h"
 #include "main.h"
 #include "esp_event.h"
 #include "freertos/FreeRTOS.h"
@@ -34,6 +35,8 @@ enum {
 	DEVSTATE_NOTIFICATION_BUTTON_BREAK_TIME_Pos,
 	DEVSTATE_NOTIFICATION_WASH_CYCLE_STEP_Pos,
 	DEVSTATE_NOTIFICATION_WASH_CYCLE_FINISHED_Pos,
+	DEVSTATE_NOTIFICATION_SWITCH_LID_OPENED_Pos,
+	DEVSTATE_NOTIFICATION_SWITCH_LID_CLOSED_Pos,
 };
 
 #define DEVSTATE_NOTIFICATION_BUTTON_ONOFF (1 << DEVSTATE_NOTIFICATION_BUTTON_ONOFF_Pos)
@@ -45,6 +48,8 @@ enum {
 #define DEVSTATE_NOTIFICATION_BUTTON_BREAK_DURATION (1 << DEVSTATE_NOTIFICATION_BUTTON_BREAK_TIME_Pos)
 #define DEVSTATE_NOTIFICATION_WASH_CYCLE_STEP (1 << DEVSTATE_NOTIFICATION_WASH_CYCLE_STEP_Pos)
 #define DEVSTATE_NOTIFICATION_WASH_CYCLE_FINISHED (1 << DEVSTATE_NOTIFICATION_WASH_CYCLE_FINISHED_Pos)
+#define DEVSTATE_NOTIFICATION_SWITCH_LID_OPENED (1 << DEVSTATE_NOTIFICATION_SWITCH_LID_OPENED_Pos)
+#define DEVSTATE_NOTIFICATION_SWITCH_LID_CLOSED (1 << DEVSTATE_NOTIFICATION_SWITCH_LID_CLOSED_Pos)
 
 #define BLINK_TIME_MS 700
 
@@ -72,6 +77,18 @@ typedef enum {
 } sel_break_duration_t;
 
 sel_break_duration_t selected_break_duration = SEL_BREAK_DURATION_SHORT;
+
+wash_cycle_params_t panel_wash_cycle_params = {
+	.water_level = WASH_CYCLE_WATER_LEVEL_LOW,
+	.prewash_break_time = 60 * 15,
+	.prewash_time = 60 * 4,
+	.prewash_shaking_period = 882,
+	.break_time = 60 * 4,
+	.wash_time = 60 * 5,
+	.wash_shaking_period = 882,
+	.rinse_count = 3,
+	.centrifuge_time = 60 * 4,
+};
 
 void devstate_update_panel() {
 
@@ -171,7 +188,7 @@ void devstate_update_panel() {
 	}
 }
 
-void devstate_event_handler(void* event_handler_arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
+static void devstate_event_handler(void* event_handler_arg, esp_event_base_t event_base, int32_t event_id, void* event_data) {
 	TaskHandle_t devstate_task = (TaskHandle_t)event_handler_arg;
 	uint32_t notification = 0;
 	if(event_base == IOPANEL_EVENT) {
@@ -213,6 +230,18 @@ void devstate_event_handler(void* event_handler_arg, esp_event_base_t event_base
 			break;
 		}
 	}
+	else if(event_base == PRESSURE_SWITCH_EVENT) {
+		switch(event_id) {
+		case PRESSURE_SWITCH_EVENT_LID_CLOSED:
+			notification = DEVSTATE_NOTIFICATION_SWITCH_LID_CLOSED;
+			break;
+		case PRESSURE_SWITCH_EVENT_LID_OPENED:
+			notification = DEVSTATE_NOTIFICATION_SWITCH_LID_OPENED;
+			break;
+		default:
+			break;
+		}
+	}
 
 	if(notification)
 		xTaskNotify(devstate_task, notification, eSetBits);
@@ -221,6 +250,7 @@ void devstate_event_handler(void* event_handler_arg, esp_event_base_t event_base
 void __attribute__((noreturn)) devstate_task_entry (void* params){
 	esp_event_handler_register(IOPANEL_EVENT, ESP_EVENT_ANY_ID, devstate_event_handler, (void*)xTaskGetCurrentTaskHandle());
 	esp_event_handler_register(WASH_CYCLE_EVENT, ESP_EVENT_ANY_ID, devstate_event_handler, (void*)xTaskGetCurrentTaskHandle());
+	esp_event_handler_register(PRESSURE_SWITCH_EVENT, ESP_EVENT_ANY_ID, devstate_event_handler, (void*)xTaskGetCurrentTaskHandle());
 
 
 	TickType_t ticksBlink = pdMS_TO_TICKS(BLINK_TIME_MS);
@@ -242,6 +272,12 @@ void __attribute__((noreturn)) devstate_task_entry (void* params){
 		}
 		case DEVICE_STATE_WAITING: {
 			devstate_update_panel();
+			if(xTaskCheckForTimeOut(&timeoutBlink, &ticksBlink)) {
+				iopanel_toggle_leds(IOPANEL_LED_ONOFF);
+				ticksBlink = pdMS_TO_TICKS(BLINK_TIME_MS);
+				vTaskSetTimeOutState(&timeoutBlink);
+			}
+
 			uint32_t notifications;
 			if(xTaskNotifyWait(0,
 					DEVSTATE_NOTIFICATION_BUTTON_ONOFF
@@ -257,8 +293,25 @@ void __attribute__((noreturn)) devstate_task_entry (void* params){
 					next_device_state = DEVICE_STATE_STANDBY;
 				}
 				else if(notifications & DEVSTATE_NOTIFICATION_BUTTON_START_PAUSE) {
-					next_device_state = DEVICE_STATE_WASH_CYCLE_RUNNING;
-					wash_cycle_start();
+					panel_wash_cycle_params.water_level = selected_water_level;
+					//TODO config wash cycle params
+					switch(selected_clothing_type) {
+					case SEL_CLOTHING_TYPE_COLOR:
+					case SEL_CLOTHING_TYPE_WHITE:
+						panel_wash_cycle_params.prewash_shaking_period = panel_wash_cycle_params.wash_shaking_period = 882;
+						break;
+					case SEL_CLOTHING_TYPE_DELICATE:
+						panel_wash_cycle_params.prewash_shaking_period = panel_wash_cycle_params.wash_shaking_period = 1200;
+						break;
+					case NUM_SEL_CLOTHING_TYPES:
+						__builtin_unreachable();
+					}
+
+					if(wash_cycle_start(&panel_wash_cycle_params)) {
+						iopanel_set_leds(IOPANEL_LED_ONOFF);
+						next_device_state = DEVICE_STATE_WASH_CYCLE_RUNNING;
+					}
+
 				} else if(notifications & DEVSTATE_NOTIFICATION_BUTTON_WATER_LEVEL) {
 					typeof(selected_water_level) tmp_water_level = selected_water_level + 1;
 					if(tmp_water_level >= WASH_CYCLE_NUM_WATER_LEVELS)
@@ -286,11 +339,6 @@ void __attribute__((noreturn)) devstate_task_entry (void* params){
 					selected_break_duration = tmp_break_duration;
 				}
 			}
-			if(xTaskCheckForTimeOut(&timeoutBlink, &ticksBlink)) {
-				iopanel_toggle_leds(IOPANEL_LED_ONOFF);
-				ticksBlink = pdMS_TO_TICKS(BLINK_TIME_MS);
-				vTaskSetTimeOutState(&timeoutBlink);
-			}
 			break;
 		}
 		case DEVICE_STATE_WASH_CYCLE_RUNNING: {
@@ -302,7 +350,7 @@ void __attribute__((noreturn)) devstate_task_entry (void* params){
 				next_device_state = DEVICE_STATE_WAITING;
 			} else if(notifications & DEVSTATE_NOTIFICATION_WASH_CYCLE_STEP) {
 				devstate_update_panel();
-			} else if(notifications & DEVSTATE_NOTIFICATION_BUTTON_START_PAUSE) {
+			} else if(notifications & (DEVSTATE_NOTIFICATION_BUTTON_START_PAUSE | DEVSTATE_NOTIFICATION_SWITCH_LID_OPENED)) {
 				wash_cycle_pause();
 				next_device_state = DEVICE_STATE_WASH_CYCLE_PAUSED;
 			}
@@ -312,12 +360,14 @@ void __attribute__((noreturn)) devstate_task_entry (void* params){
 			uint32_t notifications;
 			if(xTaskNotifyWait(0, DEVSTATE_NOTIFICATION_BUTTON_ONOFF | DEVSTATE_NOTIFICATION_BUTTON_START_PAUSE, &notifications, pdMS_TO_TICKS(BLINK_TIME_MS)) == pdPASS) {
 				if(notifications & DEVSTATE_NOTIFICATION_BUTTON_ONOFF) {
-					next_device_state = DEVICE_STATE_STANDBY;
 					wash_cycle_abort();
+					iopanel_clear_leds(IOPANEL_LEDS_ALL);
+					next_device_state = DEVICE_STATE_STANDBY;
 				}
-				else if(notifications & DEVSTATE_NOTIFICATION_BUTTON_START_PAUSE) {
+				else if((notifications & (DEVSTATE_NOTIFICATION_BUTTON_START_PAUSE | DEVSTATE_NOTIFICATION_SWITCH_LID_CLOSED)) && pressure_switch_state.lid) {
+					wash_cycle_resume();
+					iopanel_set_leds(IOPANEL_LED_ONOFF);
 					next_device_state = DEVICE_STATE_WASH_CYCLE_RUNNING;
-					wash_cycle_start();
 				}
 			}
 			else {

@@ -40,9 +40,22 @@ typedef enum {
 
 extern volatile wash_cycle_step_t wash_cycle_current_step;
 
+typedef struct {
+	uint8_t water_level;
+	uint8_t rinse_count;
+	uint16_t prewash_shaking_period;
+	uint16_t wash_shaking_period;
+	uint16_t prewash_time;
+	uint16_t prewash_break_time;
+	uint16_t break_time;
+	uint16_t wash_time;
+	uint16_t centrifuge_time;
+} wash_cycle_params_t;
 
-void wash_cycle_start();
+
+bool wash_cycle_start(wash_cycle_params_t* params);
 void wash_cycle_pause();
+void wash_cycle_resume();
 void wash_cycle_skip_step();
 void wash_cycle_abort();
 

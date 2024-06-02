@@ -17,12 +17,11 @@ uint8_t iopanel_current_row = 0;
 volatile uint32_t iopanel_led_cols = 0;
 uint8_t iopanel_btn_cols = 0;
 
-#define IOPANEL_PCA_TIMEOUT 40
-
+#define IOPANEL_LED_BLINK_PERIOD pdMS_TO_TICKS(4)
 
 void __attribute__((noreturn)) iopanel_task_entry(void* params) {
 
-	pca9554_write_config(PCA_IOPANEL, 0, IOPANEL_PCA_TIMEOUT); // all outputs
+	pca9554_write_config(PCA_IOPANEL, 0, pdMS_TO_TICKS(100)); // all outputs
 
 	gpio_set_direction(GPIO_NUM_8, GPIO_MODE_OUTPUT_OD);
 	gpio_set_direction(GPIO_NUM_9, GPIO_MODE_OUTPUT_OD);
@@ -30,15 +29,26 @@ void __attribute__((noreturn)) iopanel_task_entry(void* params) {
 	gpio_set_direction(GPIO_NUM_0, GPIO_MODE_INPUT);
 	gpio_set_direction(GPIO_NUM_1, GPIO_MODE_INPUT);
 
-	TickType_t t0 = xTaskGetTickCount();
+	TickType_t loop_ticks = xTaskGetTickCount();
 
 	for(;;) {
-		pca9554_write_output(PCA_IOPANEL, 0, pdMS_TO_TICKS(5));
+		TimeOut_t timeout;
+		vTaskSetTimeOutState(&timeout);
+
+		TickType_t timeout_ticks = IOPANEL_LED_BLINK_PERIOD;
+
+		pca9554_write_output(PCA_IOPANEL, 0, timeout_ticks);
+
+		if(xTaskCheckForTimeOut(&timeout, &timeout_ticks) == pdTRUE)
+			continue;
 
 		gpio_set_level(GPIO_NUM_8, (iopanel_current_row & 1) ? 1 : 0);
 		gpio_set_level(GPIO_NUM_9, (iopanel_current_row & 2) ? 1 : 0);
 
-		pca9554_write_output(PCA_IOPANEL, (uint8_t)(iopanel_led_cols >> (8 * iopanel_current_row)), pdMS_TO_TICKS(5));
+		pca9554_write_output(PCA_IOPANEL, (uint8_t)(iopanel_led_cols >> (8 * iopanel_current_row)), timeout_ticks);
+
+		if(xTaskCheckForTimeOut(&timeout, &timeout_ticks) == pdTRUE)
+			continue;
 
 		// check if IO0 col is pressed
 		typeof(iopanel_btn_cols) btn_mask = (1 << (2 * iopanel_current_row));
@@ -88,7 +98,7 @@ void __attribute__((noreturn)) iopanel_task_entry(void* params) {
 			iopanel_btn_cols &= ~btn_mask;
 
 
-		vTaskDelayUntil(&t0, pdMS_TO_TICKS(5));
+		vTaskDelayUntil(&loop_ticks, IOPANEL_LED_BLINK_PERIOD);
 
 		iopanel_current_row = (iopanel_current_row + 1) & 3;
 	}

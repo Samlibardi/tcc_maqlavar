@@ -1,4 +1,4 @@
-idf_component_register(SRCS "main.c" "wash_cycle.c" "iopanel.c" "devstate.c"
+idf_component_register(SRCS "main.c" "wash_cycle.c" "iopanel.c" "devstate.c" "pressure_switch.c"
                     INCLUDE_DIRS "."
                     REQUIRES pca9554 driver nvs_flash esp_wifi esp_netif wifi_provisioning)
 

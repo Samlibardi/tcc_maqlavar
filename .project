@@ -1239,6 +1239,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_coex/esp32c2/esp_coex_adapter.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/esp_coex/src/coexist.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_coex/src/coexist.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_common/src/esp_err_to_name.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_common/src/esp_err_to_name.c</location>
@@ -1272,6 +1277,16 @@
 			<name>build/ide/esp_idf_components/esp_hid/src/esp_hidh.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_hid/src/esp_hidh.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_hid/src/nimble_hidd.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_hid/src/nimble_hidd.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/esp_hid/src/nimble_hidh.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_hid/src/nimble_hidh.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_http_client/lib/http_auth.c</name>
@@ -1512,16 +1527,6 @@
 			<name>build/ide/esp_idf_components/esp_system/port/panic_handler.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_system/port/panic_handler.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_system/task_wdt/task_wdt.c</name>
-			<type>1</type>
-			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_system/task_wdt/task_wdt.c</location>
-		</link>
-		<link>
-			<name>build/ide/esp_idf_components/esp_system/task_wdt/task_wdt_impl_esp_timer.c</name>
-			<type>1</type>
-			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_system/task_wdt/task_wdt_impl_esp_timer.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/esp_timer/src/esp_timer.c</name>
@@ -1959,6 +1964,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/wifi_provisioning/src/manager.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/wifi_provisioning/src/scheme_ble.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/wifi_provisioning/src/scheme_ble.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/wifi_provisioning/src/scheme_console.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/wifi_provisioning/src/scheme_console.c</location>
@@ -2037,6 +2047,96 @@
 			<name>build/ide/esp_idf_components/bootloader_support/src/idf/bootloader_sha.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bootloader_support/src/idf/bootloader_sha.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/api/esp_blufi_api.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/api/esp_blufi_api.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/alarm.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/alarm.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/allocator.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/allocator.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/buffer.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/buffer.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/config.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/config.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/fixed_pkt_queue.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/fixed_pkt_queue.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/fixed_queue.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/fixed_queue.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/future.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/future.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/hash_functions.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/hash_functions.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/hash_map.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/hash_map.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/list.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/list.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/mutex.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/mutex.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/osi.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/osi.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/pkt_queue.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/pkt_queue.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/semaphore.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/semaphore.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/osi/thread.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/osi/thread.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/controller/esp32c2/bt.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/controller/esp32c2/bt.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/porting/mem/bt_osi_mem.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/porting/mem/bt_osi_mem.c</location>
 		</link>
 		<link>
 			<name>build/ide/esp_idf_components/cmock/CMock/src/cmock.c</name>
@@ -2819,6 +2919,11 @@
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/protocomm/src/transports/protocomm_httpd.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/protocomm/src/transports/protocomm_nimble.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/protocomm/src/transports/protocomm_nimble.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/spiffs/spiffs/src/spiffs_cache.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/spiffs/spiffs/src/spiffs_cache.c</location>
@@ -3234,6 +3339,26 @@
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/app_trace/sys_view/Sample/FreeRTOSV10.4/SEGGER_SYSVIEW_FreeRTOS.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/bt/common/btc/core/btc_alarm.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/btc/core/btc_alarm.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/btc/core/btc_manage.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/btc/core/btc_manage.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/btc/core/btc_task.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/btc/core/btc_task.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/porting/nimble/src/os_msys_init.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/porting/nimble/src/os_msys_init.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/esp_gdbstub/src/port/riscv/gdbstub_riscv.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/esp_gdbstub/src/port/riscv/gdbstub_riscv.c</location>
@@ -3514,6 +3639,16 @@
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/wpa_supplicant/esp_supplicant/src/crypto/tls_mbedtls.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/port/src/nvs_port.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/port/src/nvs_port.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/porting/npl/freertos/src/npl_os_freertos.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/porting/npl/freertos/src/npl_os_freertos.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/lwip/lwip/src/apps/netbiosns/netbiosns.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/lwip/lwip/src/apps/netbiosns/netbiosns.c</location>
@@ -3764,9 +3899,369 @@
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/app_trace/sys_view/Sample/FreeRTOSV10.4/Config/esp/SEGGER_SYSVIEW_Config_FreeRTOS.c</location>
 		</link>
 		<link>
+			<name>build/ide/esp_idf_components/bt/common/btc/profile/esp/blufi/blufi_prf.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/btc/profile/esp/blufi/blufi_prf.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/btc/profile/esp/blufi/blufi_protocol.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/btc/profile/esp/blufi/blufi_protocol.c</location>
+		</link>
+		<link>
 			<name>build/ide/esp_idf_components/efuse/src/efuse_controller/keys/without_key_purposes/one_key_block/esp_efuse_api_key.c</name>
 			<type>1</type>
 			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/efuse/src/efuse_controller/keys/without_key_purposes/one_key_block/esp_efuse_api_key.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/common/btc/profile/esp/blufi/nimble_host/esp_blufi.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/common/btc/profile/esp/blufi/nimble_host/esp_blufi.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_aes_ccm.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_aes_ccm.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_att.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_att.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_att_clt.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_att_clt.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_att_cmd.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_att_cmd.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_att_svr.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_att_svr.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_ead.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_ead.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_eddystone.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_eddystone.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_gap.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_gap.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_gattc.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_gattc.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_gattc_cache.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_gattc_cache.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_gattc_cache_conn.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_gattc_cache_conn.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_gatts.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_gatts.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_gatts_lcl.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_gatts_lcl.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_adv.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_adv.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_atomic.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_atomic.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_cfg.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_cfg.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_conn.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_conn.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_flow.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_flow.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_cmd.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_cmd.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_evt.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_evt.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_util.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_hci_util.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_id.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_id.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_log.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_log.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_mbuf.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_mbuf.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_misc.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_misc.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_mqueue.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_mqueue.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_periodic_sync.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_periodic_sync.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_pvcy.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_pvcy.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_resolv.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_resolv.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_shutdown.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_shutdown.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_startup.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_startup.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_hs_stop.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_hs_stop.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_ibeacon.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_ibeacon.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_coc.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_coc.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_sig.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_sig.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_sig_cmd.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_l2cap_sig_cmd.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_sm.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_sm.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_sm_alg.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_sm_alg.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_sm_cmd.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_sm_cmd.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_sm_lgcy.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_sm_lgcy.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_sm_sc.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_sm_sc.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_store.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_store.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_store_util.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_store_util.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/src/ble_uuid.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/src/ble_uuid.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/transport/src/transport.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/transport/src/transport.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/porting/nimble/src/nimble_port.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/porting/nimble/src/nimble_port.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/util/src/addr.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/util/src/addr.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/porting/npl/freertos/src/nimble_port_freertos.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/porting/npl/freertos/src/nimble_port_freertos.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/ans/src/ble_svc_ans.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/ans/src/ble_svc_ans.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/bas/src/ble_svc_bas.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/bas/src/ble_svc_bas.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/cts/src/ble_svc_cts.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/cts/src/ble_svc_cts.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/dis/src/ble_svc_dis.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/dis/src/ble_svc_dis.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/gap/src/ble_svc_gap.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/gap/src/ble_svc_gap.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/gatt/src/ble_svc_gatt.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/gatt/src/ble_svc_gatt.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/hid/src/ble_svc_hid.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/hid/src/ble_svc_hid.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/hr/src/ble_svc_hr.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/hr/src/ble_svc_hr.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/htp/src/ble_svc_htp.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/htp/src/ble_svc_htp.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/ias/src/ble_svc_ias.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/ias/src/ble_svc_ias.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/ipss/src/ble_svc_ipss.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/ipss/src/ble_svc_ipss.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/lls/src/ble_svc_lls.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/lls/src/ble_svc_lls.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/prox/src/ble_svc_prox.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/prox/src/ble_svc_prox.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/sps/src/ble_svc_sps.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/sps/src/ble_svc_sps.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/services/tps/src/ble_svc_tps.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/services/tps/src/ble_svc_tps.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/store/config/src/ble_store_config.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/store/config/src/ble_store_config.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/store/config/src/ble_store_nvs.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/store/config/src/ble_store_nvs.c</location>
+		</link>
+		<link>
+			<name>build/ide/esp_idf_components/bt/host/nimble/nimble/nimble/host/store/ram/src/ble_store_ram.c</name>
+			<type>1</type>
+			<location>C:/Espressif/frameworks/esp-idf-v5.2.1/components/bt/host/nimble/nimble/nimble/host/store/ram/src/ble_store_ram.c</location>
 		</link>
 	</linkedResources>
 </projectDescription>
